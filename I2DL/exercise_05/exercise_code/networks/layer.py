@@ -65,7 +65,9 @@ class Relu:
         # Implement the forward pass of Relu activation function               #
         ########################################################################
 
-        pass
+        outputs = x
+        outputs[outputs<0] = 0
+        cache = outputs
 
         ########################################################################
         #                           END OF YOUR CODE                           #
@@ -81,8 +83,11 @@ class Relu:
         # TODO:                                                                #
         # Implement the backward pass of Relu activation function              #
         ########################################################################
-
-        pass
+        # Consider f = relu(x) --> dx = ∂f/∂x = ∂f/∂out * ∂out/∂x = dout * ∂Relu(x)/∂x
+        # Note cache = Relu(x)
+        dcache = cache
+        dcache[dcache>0] = 1
+        dx = dout * dcache
 
         ########################################################################
         #                           END OF YOUR CODE                           #
