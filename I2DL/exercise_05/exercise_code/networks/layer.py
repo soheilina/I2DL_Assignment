@@ -19,7 +19,8 @@ class Sigmoid:
         # Implement the forward pass of Sigmoid activation function            #
         ########################################################################
 
-        pass
+        outputs = 1 / (1+np.exp(-x))
+        cache = outputs
 
         ########################################################################
         #                           END OF YOUR CODE                           #
@@ -35,8 +36,10 @@ class Sigmoid:
         # TODO:                                                                #
         # Implement the backward pass of Sigmoid activation function           #
         ########################################################################
-
-        pass
+        # Consider f = sigmoid(x) --> dx = ∂f/∂x = ∂f/∂out * ∂out/∂x = dout * (sigmoid(x) * (1-sigmoid(x))
+        # Note cache=sigmoid(x) --> so dx = dout * cache * (1-cache)
+        dCache = cache * (1 - cache)
+        dx = dout * dCache
 
         ########################################################################
         #                           END OF YOUR CODE                           #
