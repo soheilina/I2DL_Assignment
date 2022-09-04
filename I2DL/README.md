@@ -32,6 +32,8 @@ Also, installing with pip should work (the *virtualenv* executable should be add
 Once *virtualenv* is successfully installed, go to the root directory of the i2dl repository (where this README.md is located) and execute:
 
 `virtualenv -p python3 .venv`
+SM: If your python version > 3.7, run:
+ `virtualenv -p python3.7 .venv`
 
 Basically, this installs a sandboxed Python in the directory `.venv`. The
 additional argument ensures that sandboxed packages are used even if they had
