@@ -115,8 +115,10 @@ def affine_forward(x, w, b):
     # TODO: Implement the affine forward pass. Store the result in out.    #
     # You will need to reshape the input into rows.                        #
     ########################################################################
-
-    pass
+    D = w.shape[0]
+    _x = x.reshape(N,D)
+    # # z = x * w + b
+    out = np.matmul(_x, w) + b
 
     ########################################################################
     #                           END OF YOUR CODE                           #
@@ -144,8 +146,13 @@ def affine_backward(dout, cache):
     # TODO: Implement the affine backward pass.                            #
     # Hint: Don't forget to average the gradients dw and db                #
     ########################################################################
-
-    pass
+    N, M, D = x.shape[0], b.shape[0], w.shape[0]
+    _x = x.reshape(N, D)
+    #print( "N, M, D : ", N, M, D )
+    #print("len(x): ", len(x))
+    db = np.sum(dout, axis=0) / N
+    dw = np.dot(_x.T, dout) / N
+    d   x = np.dot(dout, w.T).reshape(x.shape)
 
     ########################################################################
     #                           END OF YOUR CODE                           #
